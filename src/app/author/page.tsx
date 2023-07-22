@@ -76,71 +76,73 @@ export default function ShowAuthor() {
   return (
     <main className={styles.main}>
       <NavAppBar />
-      <Box sx={{ width: 400 }} mt={5} ml={50}>
-        <Box mb={2}>
-          <div style={{flexDirection: "row", justifyContent: "space-between"}}>
-            <div>
-                <h2 id="parent-modal-title">Books by Author</h2>
+      <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <Box mt={5}>
+            <Box mb={2}>
+            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                <div>
+                    <h2 id="parent-modal-title">Books by Author</h2>
+                </div>
+                <div>
+                    <Button onClick={() => {
+                        router.back()                
+                    }} style={{minWidth:'4px'}}>
+                    <ArrowBackIcon
+                        fontSize="small"
+                        style={{ color: "#5dade2" }}
+                    />
+                    </Button>
+                </div>
             </div>
-            <div>
-                <Button onClick={() => {
-                    router.back()                
-                  }} style={{minWidth:'4px'}}>
-                  <ArrowBackIcon
-                    fontSize="small"
-                    style={{ color: "#5dade2" }}
-                  />
-                </Button>
-            </div>
-          </div>
+            </Box>
+            <Card sx={{ width: 600, height: 600 }}>
+            <CardHeader
+                avatar={<Avatar aria-label="recipe" src={author.photo}></Avatar>}
+                subheader={
+                <div>
+                    <p style={{ fontSize: 12, fontWeight: "bold" }}>
+                    Autor: {`${author.firstname} ${author.lastname}`}
+                    </p>
+                    <p style={{ fontSize: 12 }}>Publicación: September 14, 2016</p>
+                </div>
+                }
+            />
+            <CardContent>
+                <List
+                sx={{ width: "100%", bgcolor: "background.paper"}}
+                >
+                
+                {listBook.map((book: any) => (
+                    <>
+                    <ListItem alignItems="flex-start" key={book._id}>
+                    <ListItemAvatar>
+                    <Avatar alt="Remy Sharp" src={book.imagen} />
+                    </ListItemAvatar>
+                    <ListItemText
+                    primary={book.name}
+                    secondary={
+                        <React.Fragment>
+                        <Typography
+                            sx={{ display: "inline" }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                        >
+                            Description
+                        </Typography>
+                        {`${book.description}`}
+                        </React.Fragment>
+                    }
+                    />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                </>
+                ))}
+                
+                </List>
+            </CardContent>
+            </Card>
         </Box>
-        <Card sx={{ width: 600, height: 600 }}>
-          <CardHeader
-            avatar={<Avatar aria-label="recipe" src={author.photo}></Avatar>}
-            subheader={
-              <div>
-                <p style={{ fontSize: 12, fontWeight: "bold" }}>
-                  Autor: {`${author.firstname} ${author.lastname}`}
-                </p>
-                <p style={{ fontSize: 12 }}>Publicación: September 14, 2016</p>
-              </div>
-            }
-          />
-          <CardContent>
-            <List
-              sx={{ width: "100%", bgcolor: "background.paper"}}
-            >
-              
-              {listBook.map((book: any) => (
-                <>
-                <ListItem alignItems="flex-start" key={book._id}>
-                <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={book.imagen} />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={book.name}
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        Description
-                      </Typography>
-                      {`${book.description}`}
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              </>
-              ))}
-              
-            </List>
-          </CardContent>
-        </Card>
       </Box>
     </main>
   );
