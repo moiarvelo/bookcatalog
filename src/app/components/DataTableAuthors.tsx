@@ -68,6 +68,7 @@ export default function DataTableAuthors() {
             renderCell: (params) => (
               <>
                 <Button onClick={() => {
+                  
                     handleClick(params);                  
                   }} style={{minWidth:'4px'}}>
                   <VisibilityOutlinedIcon
