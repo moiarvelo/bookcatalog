@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import { AuthorResources } from "../resources/AuthorResources";
@@ -11,6 +11,7 @@ import ModalDeleteAuthor from "./ModalDeleteAuthor";
 
 
 export default function DataTableAuthors() {
+  
   const [selectedRowId, setSelectedRowId] = React.useState(null);
   const [authorsList, setAuthorsList] = React.useState([]);
 
