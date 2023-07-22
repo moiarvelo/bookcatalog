@@ -41,7 +41,7 @@ export default function ShowAuthor() {
 
     const getBooks = async () => {
       try {
-        const response = await BookResources.getAllBooksByIdAuthor("/books?author_id="+`${idAuthor}`);
+        const response = await BookResources.getAllBooksByIdAuthor("/books-by-author?author_id="+`${idAuthor}`);
 
         console.log("Response list books", response);
         setlistBook(response);
