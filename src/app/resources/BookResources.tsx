@@ -57,9 +57,24 @@ const getByIdBook = async (path: any) => {
   }
 };
 
+const getAllBooksByIdAuthor = async (path: any) => {
+  console.log("Path", path);
+  try {
+    const { data } = await axiosFetch(path);
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    } else {
+      console.log('Unexpected error', error);
+    }
+  }
+};
+
 export const BookResources = {
     getAllBooks,
     createBook,
     deleteBook,
     getByIdBook,
+    getAllBooksByIdAuthor,
 };

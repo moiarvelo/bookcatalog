@@ -31,13 +31,7 @@ export default function ShowAuthor() {
 
   console.log("idAuthor", idAuthor);
 
-  //   const [book, setBook] = React.useState({
-  //       name:'',
-  //       description:'',
-  //       imagen:'',
-  //       idAuthor:'',
-
-  //   });
+    const [listBook, setlistBook] = React.useState([]);
 
   const [author, setAuthor] = React.useState({
     firstname: "",
@@ -45,24 +39,17 @@ export default function ShowAuthor() {
     photo: "",
   });
 
-  //   const getBookById = async () => {
-  //     try {
-  //       const response = await BookResources.getByIdBook("/book/"+`${idBook}`);
+    const getBooks = async () => {
+      try {
+        const response = await BookResources.getAllBooksByIdAuthor("/books?author_id="+`${idAuthor}`);
 
-  //       console.log("Response", response);
-  //       setBook({
-  //         ...book,
-  //         name:response.data.name,
-  //         description:response.data.description,
-  //         imagen:response.data.imagen,
-  //         idAuthor:response.data.author_id,
+        console.log("Response list books", response);
+        setlistBook(response);
 
-  //       });
-
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   const getAuthorById = async () => {
     try {
@@ -82,7 +69,7 @@ export default function ShowAuthor() {
   };
 
   React.useEffect(() => {
-    //getBookById();
+    getBooks();
     getAuthorById();
   }, []);
 
@@ -91,7 +78,7 @@ export default function ShowAuthor() {
       <NavAppBar />
       <Box sx={{ width: 400 }} mt={5} ml={50}>
         <Box mb={2}>
-          <h2 id="parent-modal-title">Detail Book</h2>
+          <h2 id="parent-modal-title">Books by Author</h2>
         </Box>
         <Card sx={{ width: 600, height: 600 }}>
           <CardHeader
