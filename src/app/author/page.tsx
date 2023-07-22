@@ -93,7 +93,7 @@ export default function ShowAuthor() {
               </div>
             }
           />
-          <CardContent style={{ marginBottom: 30}}>
+          <CardContent>
             <List
               sx={{ width: "100%", bgcolor: "background.paper"}}
             >
