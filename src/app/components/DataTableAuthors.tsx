@@ -37,7 +37,7 @@ export default function DataTableAuthors() {
   const getAuthors = async () => {
     try {
       const response = await AuthorResources.getAllAuthors("/authors");
-      console.log("Response", response.result);
+      console.log("Response authors", response);
       
       const resp = response.result;
       const rows = resp.reverse().map((items: any) => ({
