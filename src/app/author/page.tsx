@@ -6,26 +6,25 @@ import styles from "../page.module.css";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import NavAppBar from "../components/NavAppBar";
-
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BookResources } from "../resources/BookResources";
 import { AuthorResources } from "../resources/AuthorResources";
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Button from "@mui/material/Button";
+
 
 export default function ShowAuthor() {
   const [expanded, setExpanded] = React.useState(false);
-
+  const router = useRouter();
   const paramValue = useSearchParams();
   const idAuthor = paramValue.get("id");
 
@@ -79,7 +78,21 @@ export default function ShowAuthor() {
       <NavAppBar />
       <Box sx={{ width: 400 }} mt={5} ml={50}>
         <Box mb={2}>
-          <h2 id="parent-modal-title">Books by Author</h2>
+          <div style={{flexDirection: "row", justifyContent: "space-between"}}>
+            <div>
+                <h2 id="parent-modal-title">Books by Author</h2>
+            </div>
+            <div>
+                <Button onClick={() => {
+                    router.back()                
+                  }} style={{minWidth:'4px'}}>
+                  <ArrowBackIcon
+                    fontSize="small"
+                    style={{ color: "#5dade2" }}
+                  />
+                </Button>
+            </div>
+          </div>
         </Box>
         <Card sx={{ width: 600, height: 600 }}>
           <CardHeader
