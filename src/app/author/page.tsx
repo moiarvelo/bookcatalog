@@ -17,75 +17,73 @@ import { useSearchParams } from "next/navigation";
 import { BookResources } from "../resources/BookResources";
 import { AuthorResources } from "../resources/AuthorResources";
 
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 
 export default function ShowAuthor() {
   const [expanded, setExpanded] = React.useState(false);
 
   const paramValue = useSearchParams();
-  const idAuthor = paramValue.get('id');
+  const idAuthor = paramValue.get("id");
 
-  console.log('idAuthor', idAuthor);
+  console.log("idAuthor", idAuthor);
 
-//   const [book, setBook] = React.useState({
-//       name:'',
-//       description:'',
-//       imagen:'',
-//       idAuthor:'',
-      
-//   });
+  //   const [book, setBook] = React.useState({
+  //       name:'',
+  //       description:'',
+  //       imagen:'',
+  //       idAuthor:'',
+
+  //   });
 
   const [author, setAuthor] = React.useState({
-      firstname:'',
-      lastname:'',
-      photo:'',
+    firstname: "",
+    lastname: "",
+    photo: "",
   });
- 
 
-//   const getBookById = async () => {
-//     try {
-//       const response = await BookResources.getByIdBook("/book/"+`${idBook}`);
+  //   const getBookById = async () => {
+  //     try {
+  //       const response = await BookResources.getByIdBook("/book/"+`${idBook}`);
 
-//       console.log("Response", response);
-//       setBook({
-//         ...book,
-//         name:response.data.name,
-//         description:response.data.description,
-//         imagen:response.data.imagen,
-//         idAuthor:response.data.author_id,
+  //       console.log("Response", response);
+  //       setBook({
+  //         ...book,
+  //         name:response.data.name,
+  //         description:response.data.description,
+  //         imagen:response.data.imagen,
+  //         idAuthor:response.data.author_id,
 
-//       });
-     
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+  //       });
+
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
   const getAuthorById = async () => {
-    
-        try {
-
-          const response = await AuthorResources.getByIdAuthor(`/author/${idAuthor}`);
-          console.log("Resp", response);
-          setAuthor({
-            ...author,
-            firstname: response.data.firstname,
-            lastname: response.data.lastname,
-            photo: response.data.photo,
-    
-          });
-          
-        } catch (error) {
-
-          console.log(error);
-          
-        }
-
+    try {
+      const response = await AuthorResources.getByIdAuthor(
+        `/author/${idAuthor}`
+      );
+      console.log("Resp", response);
+      setAuthor({
+        ...author,
+        firstname: response.data.firstname,
+        lastname: response.data.lastname,
+        photo: response.data.photo,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   React.useEffect(() => {
     //getBookById();
     getAuthorById();
-
   }, []);
 
   return (
@@ -97,29 +95,90 @@ export default function ShowAuthor() {
         </Box>
         <Card sx={{ width: 600, height: 600 }}>
           <CardHeader
-            avatar={
-              <Avatar aria-label="recipe"  src={author.photo}>
-                
-              </Avatar>
-            }
+            avatar={<Avatar aria-label="recipe" src={author.photo}></Avatar>}
             subheader={
               <div>
-                <p style={{fontSize: 12, fontWeight: "bold"}}>Autor: {`${author.firstname} ${author.lastname}`}</p>
-                <p  style={{fontSize: 12}}>Publicación: September 14, 2016</p>
+                <p style={{ fontSize: 12, fontWeight: "bold" }}>
+                  Autor: {`${author.firstname} ${author.lastname}`}
+                </p>
+                <p style={{ fontSize: 12 }}>Publicación: September 14, 2016</p>
               </div>
             }
           />
-          {/* <CardMedia
-            component="img"
-            height="400"
-            image={book.imagen}
-            sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
-          />
           <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              {book.description}
-            </Typography>
-          </CardContent> */}
+            <List
+              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            >
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Brunch this weekend?"
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        sx={{ display: "inline" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        Ali Connors
+                      </Typography>
+                      {" — I'll be in your neighborhood doing errands this…"}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar
+                    alt="Travis Howard"
+                    src="/static/images/avatar/2.jpg"
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Summer BBQ"
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        sx={{ display: "inline" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        to Scott, Alex, Jennifer
+                      </Typography>
+                      {" — Wish I could come, but I'm out of town this…"}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Oui Oui"
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        sx={{ display: "inline" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        Sandra Adams
+                      </Typography>
+                      {" — Do you have Paris recommendations? Have you ever…"}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+            </List>
+          </CardContent>
         </Card>
       </Box>
     </main>
