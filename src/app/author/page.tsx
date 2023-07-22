@@ -93,9 +93,9 @@ export default function ShowAuthor() {
               </div>
             }
           />
-          <CardContent>
+          <CardContent style={{ marginBottom: 30}}>
             <List
-              sx={{ width: "100%", bgcolor: "background.paper", marginBottom:60 }}
+              sx={{ width: "100%", bgcolor: "background.paper"}}
             >
               
               {listBook.map((book: any) => (
