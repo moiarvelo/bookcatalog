@@ -27,6 +27,12 @@ export default function DataTableAuthors() {
     setSelectedRowId(params.row.id);
   };
 
+  const handleClick = (params: any) => {
+    const paramValue = params.row.id; 
+    router.push(`/author?id=${paramValue}`);
+        
+  };
+
     
   const getAuthors = async () => {
     try {
@@ -61,7 +67,9 @@ export default function DataTableAuthors() {
             width: 120,
             renderCell: (params) => (
               <>
-                <Button onClick={() => router.push("/book")} style={{minWidth:'4px'}}>
+                <Button onClick={() => {
+                    handleClick(params);                  
+                  }} style={{minWidth:'4px'}}>
                   <VisibilityOutlinedIcon
                     fontSize="small"
                     style={{ color: "#5dade2" }}

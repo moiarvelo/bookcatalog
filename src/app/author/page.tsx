@@ -22,17 +22,17 @@ export default function ShowAuthor() {
   const [expanded, setExpanded] = React.useState(false);
 
   const paramValue = useSearchParams();
-  const idBook = paramValue.get('id');
+  const idAuthor = paramValue.get('id');
 
-  console.log('idBook', idBook);
+  console.log('idAuthor', idAuthor);
 
-  const [book, setBook] = React.useState({
-      name:'',
-      description:'',
-      imagen:'',
-      idAuthor:'',
+//   const [book, setBook] = React.useState({
+//       name:'',
+//       description:'',
+//       imagen:'',
+//       idAuthor:'',
       
-  });
+//   });
 
   const [author, setAuthor] = React.useState({
       firstname:'',
@@ -41,30 +41,30 @@ export default function ShowAuthor() {
   });
  
 
-  const getBookById = async () => {
-    try {
-      const response = await BookResources.getByIdBook("/book/"+`${idBook}`);
+//   const getBookById = async () => {
+//     try {
+//       const response = await BookResources.getByIdBook("/book/"+`${idBook}`);
 
-      console.log("Response", response);
-      setBook({
-        ...book,
-        name:response.data.name,
-        description:response.data.description,
-        imagen:response.data.imagen,
-        idAuthor:response.data.author_id,
+//       console.log("Response", response);
+//       setBook({
+//         ...book,
+//         name:response.data.name,
+//         description:response.data.description,
+//         imagen:response.data.imagen,
+//         idAuthor:response.data.author_id,
 
-      });
+//       });
      
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
   const getAuthorById = async () => {
     
         try {
 
-          const response = await AuthorResources.getByIdAuthor(`/author/${book.idAuthor}`);
+          const response = await AuthorResources.getByIdAuthor(`/author/${idAuthor}`);
           console.log("Resp", response);
           setAuthor({
             ...author,
@@ -83,7 +83,7 @@ export default function ShowAuthor() {
   };
 
   React.useEffect(() => {
-    getBookById();
+    //getBookById();
     getAuthorById();
 
   }, []);
@@ -102,7 +102,6 @@ export default function ShowAuthor() {
                 
               </Avatar>
             }
-            title={book.name}
             subheader={
               <div>
                 <p style={{fontSize: 12, fontWeight: "bold"}}>Autor: {`${author.firstname} ${author.lastname}`}</p>
@@ -110,7 +109,7 @@ export default function ShowAuthor() {
               </div>
             }
           />
-          <CardMedia
+          {/* <CardMedia
             component="img"
             height="400"
             image={book.imagen}
@@ -120,7 +119,7 @@ export default function ShowAuthor() {
             <Typography variant="body2" color="text.secondary">
               {book.description}
             </Typography>
-          </CardContent>
+          </CardContent> */}
         </Card>
       </Box>
     </main>
