@@ -3,7 +3,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import { BookResources } from "../resources/BookResources";
 
 const style = {
@@ -27,13 +26,11 @@ type Props = {
 };
 
 export default function ModalDelete({ idBook, open, onClose }: Props) {
-  console.log(idBook);
- 
+   
   const deleteBook = async () => {
     try {
       const response = await BookResources.deleteBook("/book/"+`${idBook}`);
 
-      console.log("Response", response);
       if(response.message === 'Deleted'){
         
         onClose();

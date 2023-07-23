@@ -3,7 +3,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import { AuthorResources } from "../resources/AuthorResources";
 
 const style = {
@@ -33,7 +32,6 @@ export default function ModalDelete({ idAuthor, open, onClose }: Props) {
     try {
       const response = await AuthorResources.deleteAuthor("/author/"+`${idAuthor}`);
 
-      console.log("Response", response);
       if(response.message === 'Deleted'){
         
         onClose();

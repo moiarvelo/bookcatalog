@@ -14,15 +14,7 @@ import darkTheme from '../styles/themes/theme'
 
 
 export default function NavAppBar() {
-  // const darkTheme = createTheme({
-  //   palette: {
-  //     mode: 'dark',
-  //     primary:{
-  //       main: '#1c2833'
-  //     }
-  //   },
-  // });
-
+  
     return (
       <>
       <CssBaseline />
@@ -41,7 +33,7 @@ export default function NavAppBar() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
+              BOOK CATALOG
             </Typography>
             <Button color="inherit">Login</Button>
           </Toolbar>

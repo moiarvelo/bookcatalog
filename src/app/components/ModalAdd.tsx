@@ -83,7 +83,7 @@ export default function ModalAdd({ id, setState }:Props) {
       ...formBook,
       [name]: value,
     });
-    console.log("form-book: ", formBook);
+   
   };
 
   const handleOnChange = (e: any) => {
@@ -92,14 +92,11 @@ export default function ModalAdd({ id, setState }:Props) {
       ...formAuthor,
       [name]: value,
     });
-    console.log("form-author: ", formAuthor);
+    
   };
 
   const handleSubmit = async (e: any) => {
-    
-    console.log("file", file);
-    console.log("fileName", fileName);
-    
+       
     const formData = new FormData();
     formData.append("file", file || "");
 
@@ -133,8 +130,6 @@ export default function ModalAdd({ id, setState }:Props) {
               method: "POST",
               body: payload,
             });
-
-            console.log("Response:", response.message);
 
             if(response.message === 'OK'){
               setLoading(false);

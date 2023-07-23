@@ -17,7 +17,6 @@ const getAllAuthors = async (path: any) => {
 
 const createAuthor = async (path: any,payload: any) => {
   try {
-    console.log("payload en resources:>> ", payload);
     const { data } = await axiosFetch.post(path, payload.body)
     return data;
   } catch (error) {
@@ -31,7 +30,6 @@ const createAuthor = async (path: any,payload: any) => {
 
 const deleteAuthor = async (path: any) => {
   try {
-    console.log("idBook resources:>> ", path);
     const { data } = await axiosFetch.delete(path)
     return data;
   } catch (error) {

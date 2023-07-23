@@ -38,8 +38,7 @@ export default function DataTableBooks() {
   const getBooks = async () => {
     try {
       const response = await BookResources.getAllBooks("/books");
-      console.log("Response", response.result);
-
+      
       const resp = response.result;
       const rows = resp.reverse().map((items: any) => ({
         id: items._id,
