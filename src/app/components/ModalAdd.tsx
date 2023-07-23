@@ -41,9 +41,10 @@ const theme = createTheme({
 
 type Props = {
   id: any;
+  setState: (val: boolean) => void;
 };
 
-export default function ModalAdd({ id }:Props) {
+export default function ModalAdd({ id, setState }:Props) {
   
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -137,6 +138,7 @@ export default function ModalAdd({ id }:Props) {
 
             if(response.message === 'OK'){
               setLoading(false);
+              setState(true);
               handleClose();
               location.reload()
             }
